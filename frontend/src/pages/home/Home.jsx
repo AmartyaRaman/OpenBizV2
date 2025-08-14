@@ -109,7 +109,7 @@ const Home = () => {
       // Handle OTP verification
       setIsVerifyingOtp(true);
       setOtpError('');
-      axios.post('http://localhost:8000/validation/adhaar/verify', {
+      axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/validation/adhaar/verify`, {
         number: formData.aadhaar.replace(/\s/g, ''),
         otp: otpValue,
       })
@@ -128,7 +128,7 @@ const Home = () => {
     } else {
       // Handle Aadhaar validation
       if (isFormValid()) {
-        axios.post('http://localhost:8000/validation/adhaar', {
+        axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/validation/adhaar`, {
           number: formData.aadhaar.replace(/\s/g, ''), // Remove spaces and use 'number' field
           name: formData.name
         })

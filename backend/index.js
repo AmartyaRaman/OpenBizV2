@@ -13,6 +13,8 @@ app.use(express.json());
 
 app.use('/validation', router);
 
+app.get('/', (req, res) => res.send({message: "HELLO"}));
+
 dbConnection().then(() => {
   app.listen(port, () => console.log(`Server started at port: ${port}`))
 }).catch((error) => {
