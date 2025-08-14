@@ -1,0 +1,18 @@
+{
+  "name": "openbiz-assignment",
+  "version": "1.0.0",
+  "description": "OpenBiz Assignment Project",
+  "scripts": {
+    "test:frontend": "vitest run --dir tests",
+    "test:backend": "cd backend && set NODE_OPTIONS=--experimental-vm-modules && npx jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitest": "^1.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.1.4",
+    "axios": "^1.6.2"
+  }
+}
