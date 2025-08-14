@@ -11,14 +11,18 @@ const port = process.env.PORT || 7000;
 app.use(cors());
 app.use(express.json());
 
+// Establish database connection for ALL environments (local + Vercel)
+dbConnection().catch((error) => {
+  console.log('Database connection error:', error);
+});
+
 app.use('/validation', router);
 
-app.get('/', (req, res) => res.send({message: "HELLO"}));
+app.get('/', (req, res) => res.json({message: "HELLO"}));
 
-dbConnection().then(() => {
-  app.listen(port, () => console.log(`Server started at port: ${port}`))
-}).catch((error) => {
-  console.log(error);
-})
+// Only start server in local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => console.log(`Server started at port: ${port}`));
+}
 
 export default app;
